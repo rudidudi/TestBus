@@ -129,7 +129,7 @@ AppConfig.java, imports @Configuration declarations from this [package] (src/mai
 ## Mongo DB configuration
 [MongoDBConfiguration.java] (src/main/java/com/whiteandreetto/prototypes/simplebus/cfg/MongoDBConfiguration.java) defines a [MongoDbFactry](http://docs.spring.io/spring-data/mongodb/docs/current/api/org/springframework/data/mongodb/MongoDbFactory.html) to allow access to the Mongo DB server.
 
-####STEPS:
+####Steps:
 
 download [MongoDB](https://www.mongodb.com/download-center#community) and install it.
 
@@ -142,13 +142,16 @@ Create the following directories if not presents:
 which are default data directory path.
 
 if the default path needs to be changed:
-  C:\mongodb\bin\mongod.exe --dbpath
+
+  C:\mongodb\bin\mongod.exe --dbpath newpath
 
 To start MongoDB, run mongod.exe from the Command Prompt or simply from the file:
-C:\mongodb\bin\mongod.exe
+
+  C:\mongodb\bin\mongod.exe
 
 To connect MongoDB, run mongo.exe:
-C:\mongodb\bin\mongo.exe
+
+  C:\mongodb\bin\mongo.exe
 
 
 ## Process Flow
