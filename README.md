@@ -129,7 +129,7 @@ AppConfig.java, imports @Configuration declarations from this [package] (src/mai
 ## Mongo DB configuration
 [MongoDBConfiguration.java] (src/main/java/com/whiteandreetto/prototypes/simplebus/cfg/MongoDBConfiguration.java) defines a [MongoDbFactry](http://docs.spring.io/spring-data/mongodb/docs/current/api/org/springframework/data/mongodb/MongoDbFactory.html) to allow access to the Mongo DB server.
 
-#STEPS:
+####STEPS:
 
 download [MongoDB](https://www.mongodb.com/download-center#community) and install it.
 
