@@ -67,10 +67,6 @@ mongo.db.clean.at.startup=false
 
 ```
 
-## Build
-
-[Gradle] (build.gradle) and [Maven] (pom.xml) build mechanisms are available.
-
 ## Spring
 
 ### Dependencies
@@ -133,7 +129,7 @@ AppConfig.java, imports @Configuration declarations from this [package] (src/mai
 
 download [MongoDB](https://www.mongodb.com/download-center#community) and install it.
 
-Create the following directories if not presents:
+Create the following directories if are not presents:
 ```cmd
   md \data\db
   
@@ -153,6 +149,11 @@ To connect MongoDB, run mongo.exe:
 ```cmd
   C:\mongodb\bin\mongo.exe
 ```
+## Build
+
+[Gradle] (build.gradle) and [Maven] (pom.xml) build mechanisms are available.
+
+
 
 ## Process Flow
 
