@@ -134,25 +134,25 @@ AppConfig.java, imports @Configuration declarations from this [package] (src/mai
 download [MongoDB](https://www.mongodb.com/download-center#community) and install it.
 
 Create the following directories if not presents:
-
+```cmd
   md \data\db
   
   md \data\log
-  
+```  
 which are default data directory path.
 
 if the default path needs to be changed:
-
+```cmd
   C:\mongodb\bin\mongod.exe --dbpath newpath
-
+```
 To start MongoDB, run mongod.exe from the Command Prompt or simply from the file:
-
+```cmd
   C:\mongodb\bin\mongod.exe
-
+```
 To connect MongoDB, run mongo.exe:
-
+```cmd
   C:\mongodb\bin\mongo.exe
-
+```
 
 ## Process Flow
 
