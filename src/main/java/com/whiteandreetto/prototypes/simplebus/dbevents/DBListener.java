@@ -135,11 +135,11 @@ public class DBListener extends Thread {
     }
 
     private int getRemainingElements(DBCursor cursor) {
-		return cursor.size();
-	}
+	return cursor.size();
+    }
 
 
-	private DBCursor createCursor(final long pLast) {
+    private DBCursor createCursor(final long pLast) {
 
         try {
             final DBCollection col = mongoDbFactory.getDb().getCollection(MONGO_DB_COLLECTION);
