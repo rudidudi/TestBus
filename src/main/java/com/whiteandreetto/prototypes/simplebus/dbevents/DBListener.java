@@ -30,6 +30,8 @@ public class DBListener extends Thread {
     private static final Lock REENTRANT_LOCK = new ReentrantLock();
 
     private static final Logger logger = LoggerFactory.getLogger(DBListener.class);
+    private static final int ZERO = 0;
+    private static final int MAX_QUEUE = 10;
 
     private AtomicBoolean running;
     private AtomicLong counter;
@@ -60,7 +62,10 @@ public class DBListener extends Thread {
 
             try {
                 final HashSet<Integer> processedMessageIds = new HashSet<>();
+                
                 long lastTimestamp = 0;
+				int elementsToSave =0;
+                
                 while (running.get()) {
                     try {
                         mongoDbFactory.getDb().requestStart();
@@ -74,12 +79,16 @@ public class DBListener extends Thread {
 
                                     try {
                                         final int id = messageFromBuffer.getInt("_id");
-
-                                        logger.info("Cursor @{}", id);
-
+                                        
                                         lastTimestamp = messageFromBuffer.getLong("timestamp");
-
-
+                                        elementsToSave= getRemainingElements(cursor);
+                                        
+                                        logger.info("Cursor @{} Elements in Queue @{}", id,elementsToSave);
+                                        
+                                        if(elementsToSave>=MAX_QUEUE){
+                                        	logger.warn("Too much elements in queue");
+                                        }
+                                         
                                         if (processedMessageIds.contains(id)) {
                                             logger.warn("Duplicate id found: " + id);
                                         }
@@ -92,6 +101,7 @@ public class DBListener extends Thread {
                                         logger.warn("Circular buffer restart");
                                         // shit happens, start reading message more recent than now
                                         lastTimestamp = System.currentTimeMillis();
+                                        elementsToSave = ZERO;
                                     }
 
 
@@ -124,7 +134,12 @@ public class DBListener extends Thread {
         logger.info("Run, completed");
     }
 
-    private DBCursor createCursor(final long pLast) {
+    private int getRemainingElements(DBCursor cursor) {
+		return cursor.size();
+	}
+
+
+	private DBCursor createCursor(final long pLast) {
 
         try {
             final DBCollection col = mongoDbFactory.getDb().getCollection(MONGO_DB_COLLECTION);
